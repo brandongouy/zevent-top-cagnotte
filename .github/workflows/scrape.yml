@@ -45,7 +45,7 @@ jobs:
         run: playwright install-deps chromium
 
       - name: Exécuter le scraper
-        run: python scraper.py
+        run: python scrapezevent.py
 
       - name: Commit et Push des modifications
         run: |
