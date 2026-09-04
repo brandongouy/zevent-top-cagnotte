@@ -1,4 +1,5 @@
 from datetime import datetime
+from zoneinfo import ZoneInfo
 import json
 import re
 from bs4 import BeautifulSoup
@@ -96,7 +97,8 @@ def scrape_zevent():
             })
 
     # Horodatage actuel (ex: 04/09/2026 à 18:15:00)
-    now_str = datetime.now().strftime("%d/%m/%Y à %H:%M:%S")
+    now_france = datetime.now(ZoneInfo("Europe/Paris"))
+    now_str = now_france.strftime("%d/%m/%Y à %H:%M:%S")
 
     output_data = {"last_updated": now_str, "streamers": streamers}
 
