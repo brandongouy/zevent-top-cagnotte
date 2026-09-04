@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cagnottes Streamers - ZEvent</title>
+  <style>
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --border-color: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary-color: #22c55e;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      padding: 2rem 1rem;
+    }
+
+    header {
+      max-width: 1200px;
+      margin: 0 auto 2rem auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 0.5rem;
+      font-size: 2.2rem;
+    }
+
+    .last-updated {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background-color: var(--card-bg);
+      padding: 1.2rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .controls-top {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .search-bar {
+      flex: 1;
+      min-width: 200px;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-size: 1rem;
+    }
+
+    .sort-select {
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-filter {
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-color);
+      color: var(--text-muted);
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .btn-filter.active, .btn-filter:hover {
+      background-color: var(--primary-color);
+      color: #000;
+      border-color: var(--primary-color);
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary-color);
+    }
+
+    .avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--primary-color);
+      flex-shrink: 0;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      width: 100%;
+    }
+
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .name {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .amount {
+      font-weight: 800;
+      color: var(--primary-color);
+      font-size: 1.1rem;
+    }
+
+    .location {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 2px 8px;
+      border-radius: 4px;
+      width: fit-content;
+    }
+
+    .no-result {
+      text-align: center;
+      grid-column: 1 / -1;
+      padding: 3rem;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Cagnottes Streamers ZEvent</h1>
+    <p id="lastUpdated" class="last-updated">Dernière mise à jour : Chargement...</p>
+    
+    <div class="controls">
+      <div class="controls-top">
+        <input type="text" id="searchInput" class="search-bar" placeholder="Rechercher un streamer...">
+        
+        <select id="sortSelect" class="sort-select">
+          <option value="desc">Montant : Décroissant</option>
+          <option value="asc">Montant : Croissant</option>
+          <option value="name">Nom : A-Z</option>
+        </select>
+      </div>
+
+      <div class="filter-buttons">
+        <button class="btn-filter active" data-location="Tous">Tous</button>
+        <button class="btn-filter" data-location="Sur place">Sur place</button>
+        <button class="btn-filter" data-location="À distance">À distance</button>
+        <button class="btn-filter" data-location="Villa">Villa</button>
+        <button class="btn-filter" data-location="Ankama">Ankama</button>
+        <button class="btn-filter" data-location="ZBase">ZBase</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div id="streamersGrid" class="grid-container"></div>
+  </main>
+
+  <script>
+    let allStreamers = [];
+    let currentLocation = 'Tous';
+
+    async function init() {
+      try {
+        const response = await fetch('streamers.json');
+        if (!response.ok) throw new Error("Erreur lors du chargement des données");
+        
+        const data = await response.json();
+        
+        // Mise à jour de la date d'exécution
+        if (data.last_updated) {
+          document.getElementById('lastUpdated').textContent = `Dernière mise à jour : ${data.last_updated}`;
+        }
+
+        // Récupération de la liste des streamers
+        allStreamers = data.streamers || [];
+        
+        setupEventListeners();
+        render();
+      } catch (error) {
+        console.error(error);
+        document.getElementById('streamersGrid').innerHTML = `
+          <div class="no-result">Impossible de charger les données.</div>
+        `;
+      }
+    }
+
+    function setupEventListeners() {
+      document.getElementById('searchInput').addEventListener('input', render);
+      document.getElementById('sortSelect').addEventListener('change', render);
+
+      const buttons = document.querySelectorAll('.btn-filter');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          buttons.forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          currentLocation = e.target.getAttribute('data-location');
+          render();
+        });
+      });
+    }
+
+    function render() {
+      const searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
+      const sortOption = document.getElementById('sortSelect').value;
+
+      let filtered = allStreamers.filter(s => {
+        const matchesName = s.name.toLowerCase().includes(searchQuery);
+        let matchesLocation = (currentLocation === 'Tous') 
+          ? true 
+          : s.location.toLowerCase().includes(currentLocation.toLowerCase());
+
+        return matchesName && matchesLocation;
+      });
+
+      filtered.sort((a, b) => {
+        if (sortOption === 'desc') return b.raw_amount - a.raw_amount;
+        if (sortOption === 'asc') return a.raw_amount - b.raw_amount;
+        if (sortOption === 'name') return a.name.localeCompare(b.name);
+      });
+
+      const container = document.getElementById('streamersGrid');
+      container.innerHTML = '';
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="no-result">Aucun streamer ne correspond à ces critères.</div>`;
+        return;
+      }
+
+      filtered.forEach(streamer => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <img class="avatar" src="${streamer.image}" alt="Avatar de ${streamer.name}" loading="lazy">
+          <div class="info">
+            <div class="header-row">
+              <span class="name">${streamer.name}</span>
+              <span class="amount">${streamer.amount}</span>
+            </div>
+            <span class="location">${streamer.location || 'N/C'}</span>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    init();
+  </script>
+</body>
+</html>
