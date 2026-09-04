@@ -181,6 +181,47 @@
       color: var(--text-muted);
       font-size: 1.2rem;
     }
+
+    .search-container {
+      position: relative;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .search-container .search-bar {
+      width: 100%;
+      padding-right: 2.5rem;
+      /* Espace pour ne pas superposer le texte et la croix */
+    }
+
+    .btn-clear {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: none;
+      /* Masqué par défaut */
+      padding: 0 4px;
+      line-height: 1;
+    }
+
+    .btn-clear:hover {
+      color: var(--text-main);
+    }
+
+    .rank {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      min-width: 28px;
+      text-align: center;
+      flex-shrink: 0;
+    }
   </style>
 </head>
 
@@ -192,7 +233,10 @@
 
     <div class="controls">
       <div class="controls-top">
-        <input type="text" id="searchInput" class="search-bar" placeholder="Rechercher un streamer...">
+        <div class="search-container">
+          <input type="text" id="searchInput" class="search-bar" placeholder="Rechercher un streamer...">
+          <button type="button" id="clearSearchBtn" class="btn-clear" aria-label="Effacer la recherche">&times;</button>
+        </div>
 
         <select id="sortSelect" class="sort-select">
           <option value="desc">Montant : Décroissant</option>
@@ -246,7 +290,23 @@
     }
 
     function setupEventListeners() {
-      document.getElementById('searchInput').addEventListener('input', render);
+      const searchInput = document.getElementById('searchInput');
+      const clearBtn = document.getElementById('clearSearchBtn');
+
+      // Affiche ou masque la croix selon le contenu + relance le filtre
+      searchInput.addEventListener('input', () => {
+        clearBtn.style.display = searchInput.value ? 'block' : 'none';
+        render();
+      });
+
+      // Vider la barre de recherche au clic sur la croix
+      clearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        clearBtn.style.display = 'none';
+        searchInput.focus();
+        render();
+      });
+
       document.getElementById('sortSelect').addEventListener('change', render);
 
       const buttons = document.querySelectorAll('.btn-filter');
@@ -295,10 +355,11 @@
         return;
       }
 
-      filtered.forEach(streamer => {
+      filtered.forEach((streamer, index) => {
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
+          <span class="rank">#${index + 1}</span>
           <img class="avatar" src="${streamer.image}" alt="Avatar de ${streamer.name}" loading="lazy">
           <div class="info">
             <div class="header-row">
