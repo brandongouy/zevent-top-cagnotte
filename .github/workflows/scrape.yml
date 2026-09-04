@@ -21,14 +21,31 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Installer les dépendances
+      - name: Installer les dépendances Python
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          playwright install chromium --with-deps
+
+      # 1. Mise en cache du dossier des navigateurs Playwright
+      - name: Cache des binaires Playwright
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('requirements.txt') }}
+
+      # 2. Installation de Chromium uniquement si le cache est vide
+      - name: Installer Chromium et dépendances système
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: playwright install chromium --with-deps
+
+      # 3. Réinstallation des dépendances système légères si le cache existe déjà
+      - name: Installer les dépendances système uniquement
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: playwright install-deps chromium
 
       - name: Exécuter le scraper
-        run: python scrapezevent.py
+        run: python scraper.py
 
       - name: Commit et Push des modifications
         run: |
