@@ -7,14 +7,17 @@ from playwright.sync_api import sync_playwright
 
 def parse_amount(amount_str):
     """
-    Transforme '1 250,50 €', '1 500 €' ou '500,7 €' en float (ex: 1250.5).
+    Transforme '1 250,50 €', '1,370.33 €' ou '500.7 €' en float.
     """
     if not amount_str:
         return 0.0
 
-    cleaned = amount_str.replace(",", ".")
-    cleaned = re.sub(r"\s+", "", cleaned)
-    cleaned = re.sub(r"[^\d.]", "", cleaned)
+    if "," in amount_str and "." in amount_str:
+        cleaned = amount_str.replace(",", "")
+    else:
+        cleaned = amount_str.replace(",", ".")
+
+    cleaned = re.sub(r"[^0-9.]", "", cleaned)
 
     try:
         return float(cleaned)
