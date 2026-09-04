@@ -1,5 +1,8 @@
 name: Scrape ZEvent Streamers
 
+permissions:
+      contents: write
+
 on:
   schedule:
     - cron: '*/5 * * * *'
@@ -8,9 +11,6 @@ on:
 jobs:
   scrape-and-commit:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
 
     steps:
       - name: Récupérer le code du dépôt
