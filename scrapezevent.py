@@ -13,6 +13,7 @@ def parse_amount(amount_str):
         return 0.0
 
     cleaned = amount_str.replace(",", ".")
+    cleaned = re.sub(r"\s+", "", cleaned)
     cleaned = re.sub(r"[^\d.]", "", cleaned)
 
     try:
