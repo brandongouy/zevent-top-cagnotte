@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -99,7 +100,8 @@
       transition: all 0.2s;
     }
 
-    .btn-filter.active, .btn-filter:hover {
+    .btn-filter.active,
+    .btn-filter:hover {
       background-color: var(--primary-color);
       color: #000;
       border-color: var(--primary-color);
@@ -181,16 +183,17 @@
     }
   </style>
 </head>
+
 <body>
 
   <header>
     <h1>Cagnottes Streamers ZEvent</h1>
     <p id="lastUpdated" class="last-updated">Dernière mise à jour : Chargement...</p>
-    
+
     <div class="controls">
       <div class="controls-top">
         <input type="text" id="searchInput" class="search-bar" placeholder="Rechercher un streamer...">
-        
+
         <select id="sortSelect" class="sort-select">
           <option value="desc">Montant : Décroissant</option>
           <option value="asc">Montant : Croissant</option>
@@ -221,9 +224,9 @@
       try {
         const response = await fetch('streamers.json');
         if (!response.ok) throw new Error("Erreur lors du chargement des données");
-        
+
         const data = await response.json();
-        
+
         // Mise à jour de la date d'exécution
         if (data.last_updated) {
           document.getElementById('lastUpdated').textContent = `Dernière mise à jour : ${data.last_updated}`;
@@ -231,7 +234,7 @@
 
         // Récupération de la liste des streamers
         allStreamers = data.streamers || [];
-        
+
         setupEventListeners();
         render();
       } catch (error) {
@@ -263,17 +266,25 @@
 
       let filtered = allStreamers.filter(s => {
         const matchesName = s.name.toLowerCase().includes(searchQuery);
-        let matchesLocation = (currentLocation === 'Tous') 
-          ? true 
+        let matchesLocation = (currentLocation === 'Tous')
+          ? true
           : s.location.toLowerCase().includes(currentLocation.toLowerCase());
 
         return matchesName && matchesLocation;
       });
 
       filtered.sort((a, b) => {
-        if (sortOption === 'desc') return b.raw_amount - a.raw_amount;
-        if (sortOption === 'asc') return a.raw_amount - b.raw_amount;
-        if (sortOption === 'name') return a.name.localeCompare(b.name);
+        // Conversion explicite en nombre avec fallback à 0 si invalide
+        const valA = Number(a.raw_amount) || 0;
+        const valB = Number(b.raw_amount) || 0;
+
+        if (sortOption === 'desc') {
+          return valB - valA;
+        } else if (sortOption === 'asc') {
+          return valA - valB;
+        } else if (sortOption === 'name') {
+          return a.name.localeCompare(b.name);
+        }
       });
 
       const container = document.getElementById('streamersGrid');
@@ -304,4 +315,5 @@
     init();
   </script>
 </body>
+
 </html>
