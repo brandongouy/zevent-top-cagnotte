@@ -1,5 +1,5 @@
 {
-    "last_updated": "05/09/2026 à 06:10:50",
+    "last_updated": "05/09/2026 à 06:20:52",
     "streamers": [
         {
             "name": "Aducine",
@@ -109,8 +109,8 @@
         {
             "name": "Arlaya",
             "image": "https://static-cdn.jtvnw.net/jtv_user_pictures/0f09e9d7-5f49-4fae-b07c-89cea52110b1-profile_image-300x300.png",
-            "amount": "952 €",
-            "raw_amount": 952.0,
+            "amount": "1,011 €",
+            "raw_amount": 1.011,
             "location": "À distance"
         },
         {
@@ -214,8 +214,8 @@
         {
             "name": "BMSJOEL",
             "image": "https://static-cdn.jtvnw.net/jtv_user_pictures/980cb0d4-db00-413c-84e9-7b5b1ef5f003-profile_image-300x300.png",
-            "amount": "15,465.43 €",
-            "raw_amount": 15465.43,
+            "amount": "15,485.43 €",
+            "raw_amount": 15485.43,
             "location": "Sur place"
         },
         {
@@ -230,6 +230,13 @@
             "image": "https://static-cdn.jtvnw.net/jtv_user_pictures/5141db64-eb0c-4dbe-a602-4f41a15b360b-profile_image-300x300.png",
             "amount": "2,104 €",
             "raw_amount": 2.104,
+            "location": "À distance"
+        },
+        {
+            "name": "Brybry",
+            "image": "https://static-cdn.jtvnw.net/jtv_user_pictures/d7188985-55a5-4097-8a55-9273addf9063-profile_image-300x300.png",
+            "amount": "700 €",
+            "raw_amount": 700.0,
             "location": "À distance"
         },
         {
@@ -326,8 +333,8 @@
         {
             "name": "ClubPingouin_Trash",
             "image": "https://static-cdn.jtvnw.net/jtv_user_pictures/0bb649ab-4f5e-4271-938b-987b7d3b6a49-profile_image-300x300.png",
-            "amount": "10,700.39 €",
-            "raw_amount": 10700.39,
+            "amount": "10,705.39 €",
+            "raw_amount": 10705.39,
             "location": "À distance"
         },
         {
@@ -396,8 +403,8 @@
         {
             "name": "Domingo",
             "image": "https://static-cdn.jtvnw.net/jtv_user_pictures/3cdae7df-600c-4833-8dfe-8d2abc5a3b25-profile_image-300x300.png",
-            "amount": "286,998.92 €",
-            "raw_amount": 286998.92,
+            "amount": "287,602.38 €",
+            "raw_amount": 287602.38,
             "location": "Sur place"
         },
         {
@@ -424,8 +431,8 @@
         {
             "name": "DrFrenesy",
             "image": "https://static-cdn.jtvnw.net/jtv_user_pictures/6362a799-8ea3-4311-a3d6-925ae52e222d-profile_image-300x300.png",
-            "amount": "812 €",
-            "raw_amount": 812.0,
+            "amount": "813 €",
+            "raw_amount": 813.0,
             "location": "À distance"
         },
         {
@@ -613,8 +620,8 @@
         {
             "name": "Gius",
             "image": "https://static-cdn.jtvnw.net/jtv_user_pictures/61b15b47-c6ca-40fc-8293-a822c3d8eed6-profile_image-300x300.png",
-            "amount": "7,919.9 €",
-            "raw_amount": 7919.9,
+            "amount": "7,920.9 €",
+            "raw_amount": 7920.9,
             "location": "Sur place"
         },
         {
@@ -1306,8 +1313,8 @@
         {
             "name": "minaravel",
             "image": "https://static-cdn.jtvnw.net/jtv_user_pictures/7c40633f-bf73-4095-96c7-caac4bfd70e7-profile_image-300x300.png",
-            "amount": "2,623.46 €",
-            "raw_amount": 2623.46,
+            "amount": "2,625.46 €",
+            "raw_amount": 2625.46,
             "location": "À distance"
         },
         {
@@ -1320,8 +1327,8 @@
         {
             "name": "mistermv",
             "image": "https://static-cdn.jtvnw.net/jtv_user_pictures/b220f285-b12e-495c-9611-d30a0cbaca0a-profile_image-300x300.png",
-            "amount": "297,705.45 €",
-            "raw_amount": 297705.45,
+            "amount": "298,308.91 €",
+            "raw_amount": 298308.91,
             "location": "Sur place"
         },
         {
@@ -1341,8 +1348,8 @@
         {
             "name": "MoMaN",
             "image": "https://static-cdn.jtvnw.net/jtv_user_pictures/395f85c5-042b-458e-8c7d-43057b6a60ac-profile_image-300x300.png",
-            "amount": "15,790.35 €",
-            "raw_amount": 15790.35,
+            "amount": "15,914.35 €",
+            "raw_amount": 15914.35,
             "location": "Sur place"
         },
         {
@@ -1397,8 +1404,8 @@
         {
             "name": "NECOtho",
             "image": "https://static-cdn.jtvnw.net/jtv_user_pictures/e6ba1024-f97a-4400-b51e-5b1e90d9b191-profile_image-300x300.png",
-            "amount": "1,243 €",
-            "raw_amount": 1.243,
+            "amount": "1,253 €",
+            "raw_amount": 1.253,
             "location": "À distance"
         },
         {
@@ -1432,8 +1439,8 @@
         {
             "name": "Nico_la",
             "image": "https://static-cdn.jtvnw.net/jtv_user_pictures/d72e4845-0556-4433-b3be-efcb1a34bb3a-profile_image-300x300.png",
-            "amount": "41,831.14 €",
-            "raw_amount": 41831.14,
+            "amount": "41,863.14 €",
+            "raw_amount": 41863.14,
             "location": "Sur place"
         },
         {
@@ -1495,8 +1502,8 @@
         {
             "name": "Onutrem",
             "image": "https://static-cdn.jtvnw.net/jtv_user_pictures/7d283c36-c52f-4b5c-8c53-c8ea4008ad4d-profile_image-300x300.png",
-            "amount": "3,059.22 €",
-            "raw_amount": 3059.22,
+            "amount": "3,089.22 €",
+            "raw_amount": 3089.22,
             "location": "Sur place"
         },
         {
@@ -1719,8 +1726,8 @@
         {
             "name": "SebJDG",
             "image": "https://static-cdn.jtvnw.net/jtv_user_pictures/0ba33932-d943-4f84-836f-132b78e52144-profile_image-300x300.png",
-            "amount": "23,658.39 €",
-            "raw_amount": 23658.39,
+            "amount": "23,668.39 €",
+            "raw_amount": 23668.39,
             "location": "Sur place"
         },
         {
@@ -2160,8 +2167,8 @@
         {
             "name": "ZeratoR",
             "image": "https://static-cdn.jtvnw.net/jtv_user_pictures/599b546a-c27f-4684-93ff-5eeecd01fb2b-profile_image-300x300.png",
-            "amount": "144,359.67 €",
-            "raw_amount": 144359.67,
+            "amount": "144,382.67 €",
+            "raw_amount": 144382.67,
             "location": "Sur place"
         },
         {
@@ -2211,13 +2218,6 @@
             "image": "https://static-cdn.jtvnw.net/jtv_user_pictures/8e561638-006d-42f9-a62b-89d651b98f03-profile_image-300x300.png",
             "amount": "22 €",
             "raw_amount": 22.0,
-            "location": "À distance"
-        },
-        {
-            "name": "Brybry",
-            "image": "https://static-cdn.jtvnw.net/jtv_user_pictures/d7188985-55a5-4097-8a55-9273addf9063-profile_image-300x300.png",
-            "amount": "700 €",
-            "raw_amount": 700.0,
             "location": "À distance"
         },
         {
