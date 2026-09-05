@@ -10,7 +10,7 @@ concurrency:
 
 on:
   schedule:
-    - cron: '*/13 * * * *'
+    - cron: '*/8 * * * *'
   workflow_dispatch:
 
 jobs:
